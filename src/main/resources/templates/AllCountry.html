@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	th:replace="BaseIndex::layout(~{::div})">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 th:text="${title}"></h1>
+					</div>
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<a th:href="@{/country/add}" type="button"
+								class="btn btn-block bg-gradient-primary">Add New Country</a>
+
+						</ol>
+					</div>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+
+							<div class="card-body">
+								<table id="example1" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Code</th>
+											<th>Name</th>
+											<th>Action</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="country: ${countryList}">
+											<td th:text="${country.id}"></td>
+											<td th:text="${country.code}"></td>
+											<td th:text="${country.name}"></td>
+											<td><a type="button" class="btn btn-primary"
+												th:href="@{/country/update/{id}(id=${country.id})}"><i
+													class="fas fa-edit"></i></a> <a type="button"
+												class="btn btn-danger"
+												th:href="@{/country/delete/{id}(id=${country.id})}"><i
+													class="fas fa-trash"></i></a></td>
+
+										</tr>
+
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>ID</th>
+											<th>User Id</th>
+											<th>Name</th>
+											<th>Action</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+</body>
+</html>
